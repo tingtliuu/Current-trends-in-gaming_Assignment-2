@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class science : MonoBehaviour
 {
+    public int yep;
     // Start is called before the first frame update
     void Start()
     {
