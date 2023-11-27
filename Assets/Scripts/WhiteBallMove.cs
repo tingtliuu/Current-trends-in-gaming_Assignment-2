@@ -68,7 +68,11 @@ public class Whiteballmove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Wall")
+        {
+            moveDirection = Vector3.Reflect(moveDirection, collision.contacts[0].normal).normalized;
+        }
         // Reflect the direction upon collision
-        moveDirection = Vector3.Reflect(moveDirection, collision.contacts[0].normal).normalized;
+        
     }
 }
