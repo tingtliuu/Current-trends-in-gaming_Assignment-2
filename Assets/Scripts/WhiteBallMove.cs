@@ -11,7 +11,7 @@ public class Whiteballmove : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 moveDirection;
     private Coroutine movementCoroutine; // Keep track of the active coroutine
-    private Boolean isMoving = false;
+    private bool isMoving = false;
 
     private void Start()
     {
@@ -71,6 +71,10 @@ public class Whiteballmove : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             moveDirection = Vector3.Reflect(moveDirection, collision.contacts[0].normal).normalized;
+        }
+        if (collision.gameObject.tag == "Hole")
+        {
+            decelerationFactor = 0;
         }
         // Reflect the direction upon collision
         

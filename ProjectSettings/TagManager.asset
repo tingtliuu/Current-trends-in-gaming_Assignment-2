@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WhiteBall
   - Wall
+  - Hole
   layers:
   - Default
   - TransparentFX

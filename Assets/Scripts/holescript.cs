@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class holescript : MonoBehaviour
 {
+    public GameObject dest;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,11 @@ public class holescript : MonoBehaviour
     {
         if (other.tag == "ball"){
           Destroy(other.gameObject);
+        }
+        if(other.tag == "WhiteBall")
+        {
+            other.transform.position = dest.transform.position;
+           
         }
     }
 
