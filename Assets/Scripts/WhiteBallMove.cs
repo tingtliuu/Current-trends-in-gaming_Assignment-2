@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Whiteballmove : MonoBehaviour
 {
     private Camera mainCamera;
-    public float speed = 5f; // Adjust the speed of movement
-    public float zDistance = 29f; // Adjust the z-coordinate distance from the camera
+    public float initialSpeed = 5f;
+    public float decelerationFactor = 0.98f;
 
-    // Direction to move after reaching the mouse click position
+    private Vector3 targetPosition;
     private Vector3 moveDirection;
+    private Coroutine movementCoroutine; // Keep track of the active coroutine
+    private Boolean isMoving = false;
 
     private void Start()
     {
@@ -17,42 +20,55 @@ public class Whiteballmove : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // Check for mouse click
+        if (Input.GetMouseButtonDown(0) && isMoving==false)
         {
+            isMoving = true;
+            // Stop any active coroutine
+            if (movementCoroutine != null)
+            {
+                StopCoroutine(movementCoroutine);
+            }
+
+            // Get the mouse position in world coordinates
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = zDistance;
-            Vector3 targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = 29f;
+
+            // Convert the mouse position to world coordinates
+            targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
             // Set the direction to move after reaching the mouse click position
             moveDirection = (targetPosition - transform.position).normalized;
 
-            StartCoroutine(MoveToTarget(targetPosition));
+            // Start moving towards the target position
+            movementCoroutine = StartCoroutine(MoveToTarget());
         }
     }
 
-    private IEnumerator MoveToTarget(Vector3 targetPosition)
+    private System.Collections.IEnumerator MoveToTarget()
     {
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            yield return null;
-        }
-
-        // Ensure the ball reaches the exact target position
-        transform.position = targetPosition;
-
-        // Continue moving in the set direction
-        StartCoroutine(ContinuousMove());
-    }
-
-    private IEnumerator ContinuousMove()
-    {
+        float currentSpeed = initialSpeed;
         while (true)
         {
-            // Move in the set direction
-            transform.position += moveDirection * speed * Time.deltaTime;
+            // Move in the set direction with a slower speed
+            transform.position += moveDirection * currentSpeed * Time.deltaTime;
+
+            // Gradually slow down the ball
+            currentSpeed *= decelerationFactor;
+
+            if (currentSpeed <= 0.5)
+            {
+                break;
+            }
 
             yield return null;
         }
+        isMoving = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Reflect the direction upon collision
+        moveDirection = Vector3.Reflect(moveDirection, collision.contacts[0].normal).normalized;
     }
 }

@@ -227,9 +227,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteBall
       objectReference: {fileID: 0}
+    - target: {fileID: 611136201327016635, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
+      propertyPath: m_TagString
+      value: WhiteBall
+      objectReference: {fileID: 0}
     - target: {fileID: 8333701625446866550, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.654166
+      value: -9.04
       objectReference: {fileID: 0}
     - target: {fileID: 8333701625446866550, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -267,7 +271,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7003150327185866147, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -277,6 +282,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 611136201327016635, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1168039746}
+    - targetCorrespondingSourceObject: {fileID: 611136201327016635, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1168039751}
   m_SourcePrefab: {fileID: 100100000, guid: a96cacc948c8dd0439b92eb68a7d3a0e, type: 3}
 --- !u!1 &1168039740 stripped
 GameObject:
@@ -309,7 +317,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1168039746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,8 +330,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8132641b7751e75409f879d5d7f741e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  zDistance: 29
+  initialSpeed: 15
+  decelerationFactor: 0.99
+--- !u!65 &1168039751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168039740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1612229162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,9 +401,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 908990577114898555, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5050457655470784876, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
       propertyPath: m_Name
       value: Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168276529735906706, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195451542624742837, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195451542624742837, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093346272482625964, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093346272482625964, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_Center.z
+      value: -0.16162467
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093346272482625964, guid: 230807befd53fcd4e8fa7d6578b64ef0, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
