@@ -58,7 +58,7 @@ public class Whiteballmove : MonoBehaviour
             // Gradually slow down the ball
             currentSpeed *= decelerationFactor;
 
-            if (currentSpeed <= 0.5)
+            if (currentSpeed <= 2)
             {
                 break;
             }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class holescript : MonoBehaviour
 {
-    public GameObject dest;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +17,12 @@ public class holescript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ball"){
-          Destroy(other.gameObject);
+        if (other.tag == "BlueBall"){
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "GreenBall")
+        {
+            Destroy(other.gameObject);
         }
 
     }

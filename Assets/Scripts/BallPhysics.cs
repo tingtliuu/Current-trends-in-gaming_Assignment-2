@@ -30,7 +30,7 @@ public class BallPhysics : MonoBehaviour
 
         // Example: Get the direction of the collision normal
         Vector3 forceDirection = collision.contacts[0].normal;
-
+        
         // Calculate the force vector
         Vector3 calculatedForce = forceMagnitude * forceDirection;
 
