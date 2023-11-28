@@ -5,8 +5,7 @@ using UnityEngine.EventSystems;
 
 public class BallPhysics : MonoBehaviour
 {
-    public float force = 1f;
-
+    public float force = 10f;
     void OnCollisionEnter(Collision collision)
     {
         Rigidbody otherRigidbody = collision.rigidbody;
@@ -34,6 +33,7 @@ public class BallPhysics : MonoBehaviour
 
         // Calculate the force vector
         Vector3 calculatedForce = forceMagnitude * forceDirection;
+
         return calculatedForce;
     }
 }

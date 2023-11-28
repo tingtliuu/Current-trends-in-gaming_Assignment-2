@@ -7,11 +7,13 @@ public class Whiteballmove : MonoBehaviour
     private Camera mainCamera;
     public float initialSpeed = 5f;
     public float decelerationFactor = 0.98f;
+    public GameObject dest;
 
     private Vector3 targetPosition;
     private Vector3 moveDirection;
     private Coroutine movementCoroutine; // Keep track of the active coroutine
     private bool isMoving = false;
+    private float currentSpeed;
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class Whiteballmove : MonoBehaviour
 
     private System.Collections.IEnumerator MoveToTarget()
     {
-        float currentSpeed = initialSpeed;
+        currentSpeed = initialSpeed;
         while (true)
         {
             // Move in the set direction with a slower speed
@@ -72,11 +74,17 @@ public class Whiteballmove : MonoBehaviour
         {
             moveDirection = Vector3.Reflect(moveDirection, collision.contacts[0].normal).normalized;
         }
-        if (collision.gameObject.tag == "Hole")
-        {
-            decelerationFactor = 0;
-        }
+
         // Reflect the direction upon collision
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hole")
+        {
+            transform.position = dest.transform.position;
+            currentSpeed = 0;
+        }
+
     }
 }

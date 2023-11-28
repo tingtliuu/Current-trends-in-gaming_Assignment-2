@@ -21,11 +21,7 @@ public class holescript : MonoBehaviour
         if (other.tag == "ball"){
           Destroy(other.gameObject);
         }
-        if(other.tag == "WhiteBall")
-        {
-            other.transform.position = dest.transform.position;
-           
-        }
+
     }
 
 }
