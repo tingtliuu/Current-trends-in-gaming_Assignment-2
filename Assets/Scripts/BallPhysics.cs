@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class BallPhysics : MonoBehaviour
 {
-    public float force = 1f;
+    private float force;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -18,6 +18,7 @@ public class BallPhysics : MonoBehaviour
 
             // Apply force to the other ball
             otherRigidbody.AddForce(force);
+
         }
     }
 

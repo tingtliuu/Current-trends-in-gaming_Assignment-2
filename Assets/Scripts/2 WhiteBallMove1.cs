@@ -1,4 +1,3 @@
-/*
 using System;
 using System.Collections;
 using UnityEngine;
@@ -49,22 +48,11 @@ public class Whiteballmove : MonoBehaviour
     private System.Collections.IEnumerator MoveToTarget()
     {
         float currentSpeed = initialSpeed;
-        while (true)
-        {
-            // Move in the set direction with a slower speed
-            transform.position += moveDirection * currentSpeed * Time.deltaTime;
 
-            // Gradually slow down the ball
-            currentSpeed *= decelerationFactor;
-
-            if (currentSpeed <= 0.5)
-            {
-                break;
-            }
+            transform.position += moveDirection * currentSpeed;
 
             yield return null;
-        }
-        isMoving = false;
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -81,4 +69,3 @@ public class Whiteballmove : MonoBehaviour
         
     }
 }
-*/
