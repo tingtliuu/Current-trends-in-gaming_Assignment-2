@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class holescript : MonoBehaviour
 {
-    public GameObject dest;
+    public GameObject board;
+    public PhysicMaterial icePhysics;
+    public PhysicMaterial slimePhysics;
+    public Material iceMaterial;
+    public Material slimeMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +23,18 @@ public class holescript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ball"){
-          Destroy(other.gameObject);
+        if (other.tag == "BlueBall"){
+            Destroy(other.gameObject);
+            board.GetComponent<Collider>().material = icePhysics;
+            board.GetComponent<Renderer>().material.color = iceMaterial.color;
         }
-        if(other.tag == "WhiteBall")
+        if (other.tag == "GreenBall")
         {
-            other.transform.position = dest.transform.position;
-           
+            Destroy(other.gameObject);
+            board.GetComponent<Collider>().material = slimePhysics;
+            board.GetComponent<Renderer>().material.color = slimeMaterial.color;
         }
+
     }
 
 }

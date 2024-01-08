@@ -7,6 +7,8 @@ TagManager:
   - WhiteBall
   - Wall
   - Hole
+  - BlueBall
+  - GreenBall
   layers:
   - Default
   - TransparentFX
