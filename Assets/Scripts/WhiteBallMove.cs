@@ -15,6 +15,7 @@ public class Whiteballmove : MonoBehaviour
     private bool isMoving = false;
     private float currentSpeed;
 
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -41,6 +42,8 @@ public class Whiteballmove : MonoBehaviour
 
             // Set the direction to move after reaching the mouse click position
             moveDirection = (targetPosition - transform.position).normalized;
+
+            
 
             // Start moving towards the target position
             movementCoroutine = StartCoroutine(MoveToTarget());
