@@ -28,20 +28,20 @@ public class holescript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "BlueBall"){
-            Destroy(other.gameObject);
-
+            icyWind.Play();
+            Destroy(other.gameObject);          
             board.GetComponent<Collider>().material = icePhysics;
             board.GetComponent<Renderer>().material.color = iceMaterial.color;
-            icyWind.Play();
+            
 
         }
         if (other.tag == "GreenBall")
         {
+            slimeSound.Play();
             Destroy(other.gameObject);
-
             board.GetComponent<Collider>().material = slimePhysics;
             board.GetComponent<Renderer>().material.color = slimeMaterial.color;
-            slimeSound.Play();
+            
 
         }
 

@@ -9,6 +9,7 @@ TagManager:
   - Hole
   - BlueBall
   - GreenBall
+  - SpawnedObject
   layers:
   - Default
   - TransparentFX
